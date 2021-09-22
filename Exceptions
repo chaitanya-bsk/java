@@ -1,0 +1,17 @@
+Throwables - a) Errors - b)Exceptions
+Exceptions - a) Checked b) Unchecked 
+Unchecked - a) Runtime
+
+
+Checked Exception - 
+If a checked exception could potentially occur in a method or a class and that exception is not handled, the code will not compile at all.
+
+Unchecked Exception - 
+Unchecked throwables include all errors and any runtime exceptions, which are not checked at compile time. Apps will likely not be able to recover at all from an unchecked throwable
+
+Errors - 
+1) IOError 2) VirtualMachineError
+
+
+VirtualMachineError 
+1) Internal Error 2) Unknown Error 3) Out of memory Error 4) Stack overflow error
