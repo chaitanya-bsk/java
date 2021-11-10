@@ -117,7 +117,7 @@ public class testjson {
     
     
     
-    //	Using jsonpath
+    //	Using jsonpath - https://jsonpathfinder.com/ - https://jsonpath.com/
     String postalCode = (JsonPath.parse(viewDeliveryPickupAvailabilityResponse.asString()).read("$.postal_code"));
 
 		
