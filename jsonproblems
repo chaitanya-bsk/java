@@ -1,0 +1,134 @@
+package testingjson;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.restassured.response.Response;
+
+import jdk.nashorn.internal.parser.JSONParser;
+
+
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONArray;
+import org.json.JSONArray;
+import org.json.simple.JSONObject;
+
+
+import java.io.IOException;
+
+import org.json.simple.parser.ParseException;
+
+
+
+public class testjson {
+
+	public static void main (String[] args) throws Exception  {
+
+	//String viewCartResponsejson = "{\"postal_code\":\"55123\",\"stores\":[{\"id\":\"31_1055\",\"store_channel\":\"BestBuy\",\"name\":\"Eagan\",\"address\":\"1235TownCentreDr\",\"city\":\"Eagan\",\"state\":\"MN\",\"postal_code\":\"55123\",\"phone\":\"651-365-0540\",\"latitude\":\"44.83303\",\"longitude\":\"-93.15589\",\"time_zone\":\"America/Chicago\",\"display_name\":\"BestBuyEagan\"},{\"id\":\"31_8\",\"store_channel\":\"BestBuy\",\"name\":\"Burnsville\",\"address\":\"14141AldrichAveS\",\"city\":\"Burnsville\",\"state\":\"MN\",\"postal_code\":\"55337\",\"phone\":\"952-435-9379\",\"latitude\":\"44.74802\",\"longitude\":\"-93.28584\",\"time_zone\":\"America/Chicago\",\"display_name\":\"BestBuyBurnsville\"}],\"products\":{\"SM-G991UZIAXAA\":[{\"sku\":\"SM-G991UZIAXAA\",\"quantity\":1,\"stores\":[{\"delivery_method\":\"DM_IM_FS_PICKUP_INSTORE\",\"store_id\":\"31_1055\",\"availability_date\":\"2021-11-02\",\"distance\":{\"value\":1.89,\"unit\":\"miles\"},\"availability_custom_stock_message\":\"Getittoday\",\"order_by\":\"2021-11-02T13:28:59.784Z\",\"order_by_local\":\"2021-11-02T08:28:59-05:00\",\"is_default\":true},{\"delivery_method\":\"DM_IM_FS_PICKUP_INSTORE\",\"store_id\":\"31_8\",\"availability_date\":\"2021-11-02\",\"distance\":{\"value\":8.48,\"unit\":\"miles\"},\"availability_custom_stock_message\":\"Getittoday\",\"order_by\":\"2021-11-02T13:28:59.785Z\",\"order_by_local\":\"2021-11-02T08:28:59-05:00\"}]}]}}";
+	
+	String viewCartResponsejson = "{\"postal_code\":\"55123\",\"stores\":[{\"id\":\"31_1055\",\"store_channel\":\"BestBuy\",\"name\":\"Eagan\",\"address\":\"1235TownCentreDr\",\"city\":\"Eagan\",\"state\":\"MN\",\"postal_code\":\"55123\",\"phone\":\"651-365-0540\",\"latitude\":\"44.83303\",\"longitude\":\"-93.15589\",\"time_zone\":\"America/Chicago\",\"display_name\":\"BestBuyEagan\",\"hours\":[{\"date\":\"2021-11-09\",\"open\":\"2021-11-09T10:00:00-06:00\",\"close\":\"2021-11-09T21:00:00-06:00\"},{\"date\":\"2021-11-10\",\"open\":\"2021-11-10T10:00:00-06:00\",\"close\":\"2021-11-10T21:00:00-06:00\"},{\"date\":\"2021-11-11\",\"open\":\"2021-11-11T10:00:00-06:00\",\"close\":\"2021-11-11T21:00:00-06:00\"},{\"date\":\"2021-11-12\",\"open\":\"2021-11-12T10:00:00-06:00\",\"close\":\"2021-11-12T21:00:00-06:00\"},{\"date\":\"2021-11-13\",\"open\":\"2021-11-13T10:00:00-06:00\",\"close\":\"2021-11-13T21:00:00-06:00\"},{\"date\":\"2021-11-14\",\"open\":\"2021-11-14T10:00:00-06:00\",\"close\":\"2021-11-14T20:00:00-06:00\"},{\"date\":\"2021-11-15\",\"open\":\"2021-11-15T10:00:00-06:00\",\"close\":\"2021-11-15T21:00:00-06:00\"}],\"image_url\":\"https://image-us.samsung.com/SamsungUS/logos/logo_bestbuy.png\"}],\"products\":{\"XE530QDA-KA2US\":[{\"sku\":\"XE530QDA-KA2US\",\"quantity\":1,\"stores\":[{\"delivery_method\":\"DM_IM_FS_PICKUP_INSTORE\",\"store_id\":\"31_1055\",\"availability_date\":\"2021-11-09\",\"distance\":{\"value\":1.89,\"unit\":\"miles\"},\"availability_custom_stock_message\":\"Getittoday\",\"order_by\":\"2021-11-09T18:26:02.133Z\",\"order_by_local\":\"2021-11-09T12:26:02-06:00\",\"is_default\":true}]}],\"SM-G991UZIAXAA\":[{\"sku\":\"SM-G991UZIAXAA\",\"quantity\":1,\"stores\":[{\"delivery_method\":\"DM_IM_FS_PICKUP_INSTORE\",\"store_id\":\"31_1055\",\"availability_date\":\"2021-11-09\",\"distance\":{\"value\":1.89,\"unit\":\"miles\"},\"availability_custom_stock_message\":\"Getittoday\",\"order_by\":\"2021-11-09T18:26:02.135Z\",\"order_by_local\":\"2021-11-09T12:26:02-06:00\",\"is_default\":true}]}]},\"fastest_delivery\":{\"XE530QDA-KA2US\":{\"store_pickup_eligible\":true,\"store_pickup_available\":true,\"availability_custom_stock_message\":\"Getittoday\",\"custom_stock_message\":\"Getittoday\",\"store_id\":\"31_1055\",\"store_name\":\"BestBuyEagan\",\"store_options\":{\"unavailable\":{\"availability_custom_stock_message\":\"PickupunavailableforthisZIP\"},\"31_1055\":{\"availability_custom_stock_message\":\"Getittoday\",\"store_name\":\"BestBuyEagan\",\"custom_stock_message\":\"Getittoday\"}},\"payment_methods\":{\"PayinFull\":\"31_1055\",\"12_MO_EIP_0_APR\":\"31_1055\",\"24_mo_eip_0_apr\":\"31_1055\",\"36_MO_EIP_0_APR\":\"31_1055\",\"36_MO_EIP_DAAS_PHONES\":\"31_1055\",\"36_MO_EIP_DAAS_PHONES_GAMERS\":\"31_1055\",\"36_MO_EIP_DAAS_TVS\":\"31_1055\",\"36_mo_eip_0_apr_phones\":\"31_1055\",\"40_MO_EIP_GRV_PHONES\":\"31_1055\",\"48_MO_EIP_0_APR\":\"31_1055\",\"48_MO_EIP_0_APR_PC\":\"31_1055\",\"48_MO_EIP_PHONES\":\"31_1055\",\"EIP_Phone\":\"31_1055\",\"EIP_Phone_36\":\"31_1055\",\"EIP_TV01\":\"31_1055\",\"STANDARD_24\":\"31_1055\",\"STANDARD_36\":\"31_1055\",\"UPGRADE_TV01\":\"31_1055\",\"tbyb_3pay\":\"31_1055\"}},\"SM-G991UZIAXAA\":{\"store_pickup_eligible\":true,\"store_pickup_available\":true,\"availability_custom_stock_message\":\"Getittoday\",\"custom_stock_message\":\"Getittoday\",\"store_id\":\"31_1055\",\"store_name\":\"BestBuyEagan\",\"store_options\":{\"unavailable\":{\"availability_custom_stock_message\":\"PickupunavailableforthisZIP\"},\"31_1055\":{\"availability_custom_stock_message\":\"Getittoday\",\"store_name\":\"BestBuyEagan\",\"custom_stock_message\":\"Getittoday\"}},\"payment_methods\":{\"PayinFull\":\"31_1055\",\"12_MO_EIP_0_APR\":\"31_1055\",\"24_mo_eip_0_apr\":\"31_1055\",\"36_MO_EIP_0_APR\":\"31_1055\",\"36_MO_EIP_DAAS_PHONES\":\"31_1055\",\"36_MO_EIP_DAAS_PHONES_GAMERS\":\"31_1055\",\"36_MO_EIP_DAAS_TVS\":\"31_1055\",\"36_mo_eip_0_apr_phones\":\"31_1055\",\"40_MO_EIP_GRV_PHONES\":\"31_1055\",\"48_MO_EIP_0_APR\":\"31_1055\",\"48_MO_EIP_0_APR_PC\":\"31_1055\",\"48_MO_EIP_PHONES\":\"31_1055\",\"EIP_Phone\":\"31_1055\",\"EIP_Phone_36\":\"31_1055\",\"EIP_TV01\":\"31_1055\",\"STANDARD_24\":\"31_1055\",\"STANDARD_36\":\"31_1055\",\"UPGRADE_TV01\":\"31_1055\",\"tbyb_3pay\":\"31_1055\"}}}}";
+	
+	JSONParser jsonparser = new JSONParser();
+	Object obj = jsonparser.parse(viewCartResponsejson);
+	
+	JSONObject viewCartResponsejson2 = (JSONObject)obj;
+	//System.out.print(viewCartResponsejson2.get("postal_code"));
+	//System.out.print(viewCartResponsejson2.containsKey("stores"));
+	//System.out.println(viewCartResponsejson2.get("stores"));
+	//System.out.println(viewCartResponsejson2.get("products"));
+	
+	JSONObject products = (JSONObject)viewCartResponsejson2.get("products");
+	System.out.println(products.get("SM-G991UZIAXAA"));
+	System.out.println(products.get("XE530QDA-KA2US"));
+	
+
+//	For getting StoreID Array
+	
+	if (viewCartResponsejson2.get("stores") instanceof JSONArray) {
+		Iterator<?> keys;
+		String nextKeys;
+		JSONArray jsonstorearray = (JSONArray) viewCartResponsejson2.get("stores");
+		System.out.println(jsonstorearray.size());
+		//System.out.println( jsonstorearray.get(1));
+		//JSONObject store1 = (JSONObject)jsonstorearray.get(1);
+		JSONObject store0 = (JSONObject)jsonstorearray.get(0);
+		//System.out.println( jsonstorearray.get(0));
+		
+		//System.out.println(store1.get("id"));
+		
+		List<String> storeidarray = new ArrayList<String>();
+		for (int i=0;i<jsonstorearray.size();i++) {
+			JSONObject storeobject = (JSONObject)jsonstorearray.get(i);
+			System.out.println( jsonstorearray.get(i));
+			System.out.println(storeobject.get("id") );
+			
+			String storeid = (String) storeobject.get("id");		
+			//List<String> array = new ArrayList<String>();
+			List<String> arrays = new ArrayList<String>();
+			storeidarray.add(storeid);;
+			
+			
+		}
+		System.out.println(storeidarray);
+	};
+	
+	System.out.println(viewCartResponsejson2.get("products") instanceof JSONObject);
+	
+	
+//	For getting SKU Array
+	
+	if (viewCartResponsejson2.get("products") instanceof JSONObject) {
+
+		JSONObject jsonstorearray = (JSONObject) viewCartResponsejson2.get("products");
+		
+		Iterator<String> keys = jsonstorearray.keySet().iterator();
+		
+		List<String> skuidarray = new ArrayList<String>();
+		
+		
+		for (Object key : jsonstorearray.keySet()) {
+	        //based on you key types
+	        String keyStr = (String)key;
+	        JSONArray keyvalue = (JSONArray) jsonstorearray.get(keyStr);
+
+	        //Print key and value
+	        System.out.println("key: "+ keyStr + " value: " + keyvalue);
+	        System.out.println(keyvalue.size());
+	       
+	       
+	        
+			for (int i=0;i<keyvalue.size();i++) {
+				JSONObject storeobject = (JSONObject)keyvalue.get(i);
+				
+				System.out.println( storeobject.get("sku"));
+				String skuid = (String) storeobject.get("sku");
+				skuidarray.add(skuid);;
+			}
+		
+	}
+		
+		System.out.println(skuidarray);
+		
+		// Comparing 2 arraylist 
+    
+    
+    
+    //	Using jsonpath
+    String postalCode = (JsonPath.parse(viewDeliveryPickupAvailabilityResponse.asString()).read("$.postal_code"));
+
+		
+		//System.out.println(jsonstorearray.size());
+		//System.out.println( jsonstorearray.get("XE530QDA-KA2US"));
+		
+		
+
+		}
+		
+		
+	
+	
+	}
