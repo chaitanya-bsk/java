@@ -123,12 +123,29 @@ public class testjson {
 		
 		//System.out.println(jsonstorearray.size());
 		//System.out.println( jsonstorearray.get("XE530QDA-KA2US"));
-		
-		
-
-		}
-		
-		
-	
+		}	
 	
 	}
+
+
+
+// replacing string- 
+
+		Response response = identityService.getPurchasePreferences();		
+	    String pay= JsonPath.parse(response.body().asString()).read("$.payment.default");
+	    
+	    JSONParser jsonparser = new JSONParser();
+	    JSONObject payment_details = (JSONObject) jsonparser.parse(response.asString());
+	    
+	    
+	    JSONObject defaultpayment = (JSONObject) payment_details.get("payment");
+	    
+	    System.out.println(defaultpayment);
+	  
+	    defaultpayment.remove("default");
+	    defaultpayment.put("default", "paymentMethod");
+	    
+	         
+	    String id = (String) defaultpayment.get("default");
+	    System.out.println(defaultpayment);
+	    System.out.println(id);
