@@ -1,1 +1,88 @@
-Problem solving
+Problem solving-
+
+public class practice
+{	
+	   // Driver code
+	   public static void main(String []args)
+	   {
+	      int arr[] = new int[]{10, 30, 40, 20, 10, 20, 50, 10};
+	      int n = arr.length;
+	      countFreq(arr, n);
+	   }	   
+   public static void countFreq(int arr[], int n)
+   {
+         boolean visited[] = new boolean[n];
+         System.out.println(visited);
+         Arrays.fill(visited, false);
+         System.out.println(visited.toString());
+
+         // Traverse through array elements and
+         // count frequencies
+         for (int i = 0; i < n; i++) {
+
+            // Skip this element if already processed
+            if (visited[i] == true)
+             continue;
+
+            // Count frequency
+            int count = 1;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                   visited[j] = true;
+                   count++;
+                }
+            }
+            if(count==1)   
+              System.out.println(arr[i]);
+   }   
+  }
+}
+
+reverse string - 
+public class practice
+{	
+	   // Driver code
+	   public static void main(String []args)
+	   {
+	      String name = "i am chaitanya";
+	      System.out.println(reverse(name));
+	   }
+	   
+   public static  String reverse(String str)
+   {
+	   char ch[] = str.toCharArray();
+	
+	String reversed = "";
+	for( int i = ch.length-1;i>=0;i--) {
+		System.out.println(ch[i]);
+		reversed+=ch[i];
+		
+	}
+   return reversed;
+  }
+
+
+}
+
+append string - 
+String s=(new StringBuilder()).append("Sachin").append(" Tendulkar).toString();  
+String s = String.format("%s%s",s1,s2);
+String s = String.join("",s1,s2);
+s.add(s1);    //String 1   s.add(s2);    //String 2  
+String str = liststr.stream().collect(Collectors.joining(", "));
+
+
+convert case -  Java String s.toUpperCase() and s.toLowerCase()
+eliminates white spaces before and after - s.trim() 
+check starting and ending letters -    
+String s="Sachin"; System.out.println(s.startsWith("Sa"));//true    
+String s="Sachin";  System.out.println(s.endsWith("n"));//true 
+charAt() method returns a character at specified index - s.charAt(3)
+s.length() - returns length of the specified String
+s2=s.intern();
+coverts given type such as int, long, float, double, boolean, char and char array into String. String.valueOf(a) - now a becomes string 
+s1.replace("Java","Kava")
+
+StringBuffer vs StringBuilder vs String 
+String representation of the object - toString()
+java.util.StringTokenizer class allows you to break a String into tokens
