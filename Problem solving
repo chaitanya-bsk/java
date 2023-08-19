@@ -64,25 +64,3 @@ public class practice
 
 }
 
-append string - 
-String s=(new StringBuilder()).append("Sachin").append(" Tendulkar).toString();  
-String s = String.format("%s%s",s1,s2);
-String s = String.join("",s1,s2);
-s.add(s1);    //String 1   s.add(s2);    //String 2  
-String str = liststr.stream().collect(Collectors.joining(", "));
-
-
-convert case -  Java String s.toUpperCase() and s.toLowerCase()
-eliminates white spaces before and after - s.trim() 
-check starting and ending letters -    
-String s="Sachin"; System.out.println(s.startsWith("Sa"));//true    
-String s="Sachin";  System.out.println(s.endsWith("n"));//true 
-charAt() method returns a character at specified index - s.charAt(3)
-s.length() - returns length of the specified String
-s2=s.intern();
-coverts given type such as int, long, float, double, boolean, char and char array into String. String.valueOf(a) - now a becomes string 
-s1.replace("Java","Kava")
-
-StringBuffer vs StringBuilder vs String 
-String representation of the object - toString()
-java.util.StringTokenizer class allows you to break a String into tokens
