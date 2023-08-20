@@ -1,0 +1,18 @@
+Array is a collection of similar type of elements which has contiguous memory location
+elements of a similar data type. you cannot declare a single array that holds both strings AND integers
+
+Advantages
+Code Optimization: It makes the code optimized, we can retrieve or sort the data efficiently
+Random access: We can get any data located at an index position
+
+store only the fixed size of elements in the array
+
+declare, instantiate and initialize the java array together  ex- int a[]={33,3,4,5}
+
+return an array from the method in Java - return new int[]{10,30,50,90,60}
+
+ArrayIndexOutOfBoundsException - length of the array in negative, equal to the array size or greater than the array size while traversing the array
+
+Questions - 
+find the frequency of each element in the array - increase count and mark as visited 
+Remove Duplicate Element in Array - 
